@@ -13,7 +13,10 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'views')));
 app.use('/api', noteRoutes);
 
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(3000, () => {
+    console.log('Servidor rodando em http://localhost:3000');
+  });
+}
 
-app.listen(3000, () => {
-  console.log('Servidor rodando em http://localhost:3000');
-});
+export default app;
