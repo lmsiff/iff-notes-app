@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body {
+  display: flex;
+  background: #212123;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+.notes-sidebar {
+  width: 400px;
+  height: 100vh;
+  background: #151515;
+  padding: 15px;
+  display: none;
+  flex-direction: column;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  left: -400px;
+  transition: 0.25s ease-in-out;
+}
+
+.show {
+  left: 0;
+}
+
+.add-note {
+  background: crimson;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 7px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+  background: #212123;
+  margin-top: 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  padding: 20px 10px;
+  transition: 0.25s ease-in-out;
+}
+
+.note:hover {
+  background: #39393c;
+}
+
+.note-activated {
+  background: #39393c;
+}
+
+.header-title {
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+.header-updated {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.491);
+  font-weight: 400;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.remove-note {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.notes-preview {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 50px 50px 100px;
+  width: 100vw;
+}
+
+input,
+textArea {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: #ffffff;
+}
+
+input {
+  font-size: 35px;
+}
+
+textarea {
+  margin-top: 50px;
+  font-size: 18px;
+  resize: none;
+  height: 100%;
+}
+
+.toggle-sidebar {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: crimson;
+  font-size: 25px;
+  position: absolute;
+  top: 30px;
+  right: -30px;
+  cursor: pointer;
+}
+
+.notes-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 15px;
+}
