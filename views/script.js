@@ -29,7 +29,7 @@ class NotesApp {
       const notes = await res.json();
       this._renderNotes(notes);
     } catch (error) {
-      console.error('Erro ao carregar notas:', error);
+      console.error('Error on load notes:', error);
     }
   }
 
@@ -47,7 +47,7 @@ class NotesApp {
       this.selectedNoteId = newNote.id;
       this._loadNotes();
     } catch (error) {
-      console.error('Erro ao criar nota:', error);
+      console.error('Error on create note:', error);
     }
   }
 
@@ -65,7 +65,7 @@ class NotesApp {
       });
       this._loadNotes();
     } catch (error) {
-      console.error('Erro ao atualizar nota:', error);
+      console.error('Error on update note:', error);
     }
   }
 
@@ -78,7 +78,7 @@ class NotesApp {
       }
       this._loadNotes();
     } catch (error) {
-      console.error('Erro ao excluir nota:', error);
+      console.error('Error on remove note:', error);
     }
   }
 
@@ -94,7 +94,7 @@ class NotesApp {
       noteEl.innerHTML = `
         <div>
           <div class="header-title">${note.title}</div>
-          <div class="header-updated">Atualizado: ${this._formatDate(note.updated)}</div>
+          <div class="header-updated">Last Update: ${this._formatDate(note.updated)}</div>
         </div>
         <button class="remove-note">❌</i></button>
       `;
@@ -143,7 +143,7 @@ class NotesApp {
 
   _formatDate(dateStr) {
     const date = new Date(dateStr);
-    if (isNaN(date.getTime())) return 'Data inválida';
+    if (isNaN(date.getTime())) return 'Invalid Date';
     return `${date.toLocaleDateString()} ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
   }
 
