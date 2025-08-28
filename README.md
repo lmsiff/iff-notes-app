@@ -19,13 +19,13 @@ Este projeto é ideal para quem deseja organizar ideias, tarefas ou registros pe
 <br/>
 
 ## Documentação da API
-![Documentação da Api com Swagger](./github/image3.png)
+![Documentação da Api com Swagger](./github/image4.png)
 Acessar no /api-docs
 
 <br/>
 
 ## Documentação da API
-![Esquemas do Swagger](./github/image4.png)
+![Esquemas do Swagger](./github/image3.png)
 Acessar no /api-docs
 
 <br/>
