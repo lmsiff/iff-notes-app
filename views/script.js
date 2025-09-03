@@ -1,6 +1,7 @@
 class NotesApp {
   constructor() {
     this.selectedNoteId = null;
+    this._updateNoteBound = this._updateNote.bind(this); // Adicionado
     this._initElements();
     this._initEvents();
     this._loadNotes();
@@ -18,8 +19,8 @@ class NotesApp {
 
   _initEvents() {
     this.addButton.addEventListener('click', () => this._createNote());
-    this.titleInput.addEventListener('input', () => this._updateNote());
-    this.bodyInput.addEventListener('input', () => this._updateNote());
+    this.titleInput.addEventListener('input', this._updateNoteBound); // Atualizado
+    this.bodyInput.addEventListener('input', this._updateNoteBound);  // Atualizado
     this.toggleButton.addEventListener('click', () => this._toggleSidebar());
   }
 
@@ -39,8 +40,8 @@ class NotesApp {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          title: 'Enter a Title...',
-          content: 'Enter a Body...'
+          title: "",
+          content: ""
         })
       });
       const newNote = await res.json();
@@ -52,7 +53,7 @@ class NotesApp {
   }
 
   async _updateNote() {
-    if (!this.selectedNoteId) return;
+    if (!this.selectedNoteId || this.titleInput.disabled || this.bodyInput.disabled) return;
 
     const title = this.titleInput.value;
     const content = this.bodyInput.value;
@@ -96,7 +97,7 @@ class NotesApp {
           <div class="header-title">${note.title}</div>
           <div class="header-updated">Last Update: ${this._formatDate(note.updated)}</div>
         </div>
-        <button class="remove-note">❌</i></button>
+        <button class="remove-note">❌</button>
       `;
 
       noteEl.addEventListener('click', () => this._selectNote(note));
@@ -129,10 +130,20 @@ class NotesApp {
   }
 
   _clearPreview() {
+    // Remove listeners temporariamente
+    this.titleInput.removeEventListener('input', this._updateNoteBound);
+    this.bodyInput.removeEventListener('input', this._updateNoteBound);
+
     this.titleInput.value = '';
     this.bodyInput.value = '';
     this.titleInput.disabled = true;
     this.bodyInput.disabled = true;
+
+    // Reativa os listeners
+    setTimeout(() => {
+      this.titleInput.addEventListener('input', this._updateNoteBound);
+      this.bodyInput.addEventListener('input', this._updateNoteBound);
+    }, 0);
   }
 
   _toggleSidebar() {
@@ -146,7 +157,6 @@ class NotesApp {
     if (isNaN(date.getTime())) return 'Invalid Date';
     return `${date.toLocaleDateString()} ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
   }
-
 }
 
 document.addEventListener('DOMContentLoaded', () => new NotesApp());

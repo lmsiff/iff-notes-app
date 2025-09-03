@@ -7,9 +7,7 @@ export class NoteDTO {
   isValid() {
     return (
       typeof this.title === 'string' &&
-      this.title.trim() !== '' &&
-      typeof this.content === 'string' &&
-      this.content.trim() !== ''
+      typeof this.content === 'string'
     );
   }
 }
