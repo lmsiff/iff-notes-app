@@ -8,7 +8,7 @@
 
 ## Descrição do projeto
 
-O Notes App é uma aplicação web fullstack desenvolvida para criar, editar e excluir notas de forma simples e eficiente. A interface é moderna e responsiva, com uma sidebar interativa e preview em tempo real. O backend foi construído com Node.js e SQLite, seguindo o padrão MVC, enquanto o frontend utiliza HTML, CSS e JavaScript orientado a objetos.
+O Notes App é uma aplicação web fullstack desenvolvida para criar, editar e excluir notas de forma simples e eficiente. A interface é moderna e responsiva, com uma sidebar interativa e preview em tempo real. O backend foi construído com Node.js e SQLite, seguindo o padrão de 3 camadas, enquanto o frontend utiliza HTML, CSS e JavaScript orientado a objetos.
 Este projeto é ideal para quem deseja organizar ideias, tarefas ou registros pessoais, e serve como base sólida para aplicações CRUD com persistência em banco de dados.
 
 <br/>
